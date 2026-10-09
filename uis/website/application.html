@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Send a patient inquiry to HealthCore. Our reception team will contact you to confirm appointment details.">
+    <title>Patient inquiry | HealthCore</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+            <script src="assets/js/navigation.js" defer></script>
+    <script src="assets/js/application-form.js" defer></script>
+  </head>
+  <body class="min-h-screen min-w-[20rem] bg-[#f5f8f7] font-sans text-base leading-relaxed text-[#18323d] antialiased flex flex-col">
+    <a class="absolute left-2 top-2 z-50 -translate-y-[160%] rounded bg-[#123047] px-4 py-3 text-white focus:translate-y-0" href="#main-content">Skip to main content</a>
+    <header class="relative z-20 border-b border-[#d7e2e1] bg-white">
+      <div class="relative mx-auto flex min-h-20 w-full max-w-[75rem] flex-wrap items-center gap-3 px-5 md:flex-nowrap md:gap-6">
+        <a class="shrink-0 font-sans text-2xl font-bold leading-tight text-[#123047] no-underline" href="index.html" aria-label="HealthCore home">HealthCore</a>
+        <button class="inline-flex min-h-11 items-center rounded-md border border-[#d7e2e1] bg-white px-3 text-[#123047] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] md:hidden" data-menu-toggle type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="text-sm font-semibold">Menu</span>
+        </button>
+        <nav class="hidden w-full md:ml-auto md:flex md:w-auto" id="primary-navigation" data-primary-navigation aria-label="Primary navigation">
+          <ul class="flex flex-col gap-1 md:flex-row md:items-center md:gap-6">
+            <li><a class="inline-flex min-h-11 items-center text-[#174a5b] underline-offset-4 hover:text-[#06645f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f]" href="index.html#home">Home</a></li>
+            <li><a class="inline-flex min-h-11 items-center text-[#174a5b] underline-offset-4 hover:text-[#06645f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f]" href="index.html#services">Services</a></li>
+            <li><a class="inline-flex min-h-11 items-center text-[#174a5b] underline-offset-4 hover:text-[#06645f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f]" href="index.html#locations">Locations</a></li>
+            <li><a class="inline-flex min-h-11 items-center text-[#174a5b] underline-offset-4 hover:text-[#06645f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f]" href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <nav class="flex items-center gap-3 border-l border-[#d7e2e1] pl-3 text-sm font-semibold" aria-label="Language">
+          <a class="font-bold text-[#06645f] underline underline-offset-4" href="application.html" lang="en" aria-current="page">EN</a>
+          <a class="font-semibold text-[#174a5b] underline-offset-4 hover:text-[#06645f]" href="application.es.html" lang="es">ES</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main-content" class="mx-auto w-full max-w-[75rem] flex-1 px-5 py-8 md:py-12">
+      <section class="mx-auto mb-8 max-w-4xl" aria-labelledby="page-title">
+        <p class="mb-2 text-sm font-bold uppercase tracking-wide text-[#174a5b]">HealthCore</p>
+        <h1 id="page-title" class="mb-3 text-4xl font-bold leading-tight text-[#123047] md:text-5xl">Patient inquiry</h1>
+        <p>Share a few details and our reception team will contact you within 1 business day to confirm appointment details. This form is an inquiry, not a confirmed booking.</p>
+        <a class="inline-flex min-h-11 items-center justify-center rounded-md border border-[#087e78] bg-white px-5 py-3 font-semibold text-[#06645f] no-underline hover:bg-[#ddf3ef] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f]" href="index.html">Back to home</a>
+      </section>
+
+      <div class="mx-auto mb-6 max-w-4xl rounded-lg border border-[#8ab89a] bg-[#eff8f1] p-6 text-[#174b2c]" id="form-notice" role="status" aria-live="polite" tabindex="-1" hidden></div>
+      <form class="mx-auto grid max-w-4xl gap-5 rounded-xl border border-[#d7e2e1] bg-white p-5 shadow-sm sm:p-8" id="patient-inquiry-form" novalidate>
+        <div class="rounded-lg border-2 border-[#b42332] bg-[#fff4f3] p-5 text-[#6e1420]" id="error-summary" tabindex="-1" aria-labelledby="error-summary-title" hidden>
+          <h2 id="error-summary-title" class="mb-3 text-3xl font-bold leading-tight text-[#123047]">Please review the following fields</h2>
+          <ul id="error-summary-list"></ul>
+        </div>
+
+        <fieldset class="min-w-0 border-0 border-t border-[#d7e2e1] p-0 pt-6">
+          <legend class="mb-4 block font-bold text-lg text-[#123047]">Personal information</legend>
+          <div class="grid min-w-0 grid-cols-1 gap-5 sm:grid-cols-2">
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="first_name">First name <span aria-hidden="true">*</span></label>
+              <input id="first_name" name="first_name" type="text" autocomplete="given-name" minlength="2" maxlength="50" required aria-describedby="first-name-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="first-name-error"></p>
+            </div>
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="last_name">Last name <span aria-hidden="true">*</span></label>
+              <input id="last_name" name="last_name" type="text" autocomplete="family-name" minlength="2" maxlength="50" required aria-describedby="last-name-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="last-name-error"></p>
+            </div>
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="date_of_birth">Date of birth <span aria-hidden="true">*</span></label>
+              <input id="date_of_birth" name="date_of_birth" type="date" required aria-describedby="date-of-birth-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="date-of-birth-error"></p>
+            </div>
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="email">Email address <span aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="email-error"></p>
+            </div>
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="phone">Phone number <span aria-hidden="true">*</span></label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+1 305 555 0191" required aria-describedby="phone-help phone-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+              <p class="mt-2 text-sm leading-snug text-[#526771]" id="phone-help">Include a plus sign and country calling code, for example +1 or +34.</p>
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="phone-error"></p>
+            </div>
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="preferred_language">Preferred language <span aria-hidden="true">*</span></label>
+              <select id="preferred_language" name="preferred_language" required aria-describedby="preferred-language-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+                <option value="">Select a language</option><option value="English">English</option><option value="Spanish">Spanish</option>
+              </select>
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="preferred-language-error"></p>
+            </div>
+            <div class="min-w-0 sm:col-span-2" data-form-field data-form-field id="patient-id-field" hidden>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="patient_id">Patient ID (optional)</label>
+              <input id="patient_id" name="patient_id" type="text" pattern="HC-[A-Za-z0-9]{6}" maxlength="9" placeholder="HC-A3F291" aria-describedby="patient-id-help patient-id-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+              <p class="mt-2 text-sm leading-snug text-[#526771]" id="patient-id-help">Format: HC- followed by 6 letters or numbers.</p>
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="patient-id-error"></p>
+            </div>
+          </div>
+          <fieldset class="mt-6 min-w-0 border-0 p-0" data-choice-group aria-describedby="new-patient-error">
+            <legend class="mb-4 block font-bold text-lg text-[#123047]">Is this your first visit to HealthCore? <span aria-hidden="true">*</span></legend>
+            <label class="inline-flex min-h-11 items-center gap-3 py-2 font-medium text-[#18323d]"><input id="new-patient-yes" type="radio" name="new_patient" value="yes" required class="h-5 w-5 shrink-0 accent-[#06645f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]"> Yes</label>
+            <label class="inline-flex min-h-11 items-center gap-3 py-2 font-medium text-[#18323d]"><input id="new-patient-no" type="radio" name="new_patient" value="no" required class="h-5 w-5 shrink-0 accent-[#06645f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]"> No</label>
+            <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="new-patient-error"></p>
+          </fieldset>
+        </fieldset>
+
+        <fieldset class="min-w-0 border-0 border-t border-[#d7e2e1] p-0 pt-6">
+          <legend class="mb-4 block font-bold text-lg text-[#123047]">Care preferences</legend>
+          <div class="grid min-w-0 grid-cols-1 gap-5 sm:grid-cols-2">
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="preferred_clinic">Preferred clinic <span aria-hidden="true">*</span></label>
+              <select id="preferred_clinic" name="preferred_clinic" required aria-describedby="preferred-clinic-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+                <option value="">Select a clinic</option>
+                <option value="HealthCore Austin Central">HealthCore Austin Central</option>
+                <option value="HealthCore Austin North">HealthCore Austin North</option>
+                <option value="HealthCore San Antonio">HealthCore San Antonio</option>
+                <option value="HealthCore Miami">HealthCore Miami</option>
+                <option value="HealthCore Orlando">HealthCore Orlando</option>
+                <option value="HealthCore Atlanta">HealthCore Atlanta</option>
+              </select>
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="preferred-clinic-error"></p>
+            </div>
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="preferred_date">Preferred date <span aria-hidden="true">*</span></label>
+              <input id="preferred_date" name="preferred_date" type="date" required aria-describedby="preferred-date-help preferred-date-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+              <p class="mt-2 text-sm leading-snug text-[#526771]" id="preferred-date-help">Choose a weekday from 1 to 60 days from today.</p>
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="preferred-date-error"></p>
+            </div>
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="preferred_time">Preferred time <span aria-hidden="true">*</span></label>
+              <select id="preferred_time" name="preferred_time" required aria-describedby="preferred-time-error evening-warning" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+                <option value="">Select a time</option><option value="morning">Morning (7am–12pm)</option><option value="afternoon">Afternoon (12pm–5pm)</option><option value="evening">Evening (5pm–8pm)</option>
+              </select>
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="preferred-time-error"></p>
+            </div>
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="service_type">Service needed <span aria-hidden="true">*</span></label>
+              <select id="service_type" name="service_type" required aria-describedby="service-type-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+                <option value="">Select a service</option>
+                <option value="primary_care">Primary Care</option>
+                <option value="chronic_disease_management">Chronic Disease Management</option>
+                <option value="specialist_consultation">Specialist Consultation</option>
+                <option value="preventive_health">Preventive Health</option>
+                <option value="womens_health">Women's Health</option>
+                <option value="paediatric_care">Paediatric Care</option>
+                <option value="mental_health">Mental Health</option>
+              </select>
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="service-type-error"></p>
+            </div>
+          </div>
+          <p class="mt-5 rounded-lg border border-[#d4b768] bg-[#fff8e5] p-4 text-[#654300]" id="evening-warning" role="status" hidden>Evening availability is limited. The selected clinic may close before 8pm; reception will confirm availability.</p>
+        </fieldset>
+
+        <fieldset class="min-w-0 border-0 border-t border-[#d7e2e1] p-0 pt-6">
+          <legend class="mb-4 block font-bold text-lg text-[#123047]">Insurance</legend>
+          <fieldset class="mt-6 min-w-0 border-0 p-0" data-choice-group aria-describedby="has-insurance-error">
+            <legend class="mb-4 block font-bold text-lg text-[#123047]">Do you have health insurance? <span aria-hidden="true">*</span></legend>
+            <label class="inline-flex min-h-11 items-center gap-3 py-2 font-medium text-[#18323d]"><input id="has-insurance-yes" type="radio" name="has_insurance" value="yes" required class="h-5 w-5 shrink-0 accent-[#06645f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]"> Yes</label>
+            <label class="inline-flex min-h-11 items-center gap-3 py-2 font-medium text-[#18323d]"><input id="has-insurance-no" type="radio" name="has_insurance" value="no" required class="h-5 w-5 shrink-0 accent-[#06645f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]"> No</label>
+            <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="has-insurance-error"></p>
+          </fieldset>
+          <div class="mt-4 grid min-w-0 grid-cols-1 gap-5 sm:grid-cols-2" id="insurance-fields" hidden>
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="insurance_provider">Insurance provider <span aria-hidden="true">*</span></label>
+              <input id="insurance_provider" name="insurance_provider" type="text" maxlength="100" autocomplete="off" aria-describedby="insurance-provider-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="insurance-provider-error"></p>
+            </div>
+            <div class="min-w-0" data-form-field>
+              <label class="mb-2 block font-semibold text-[#18323d]" for="insurance_member_id">Insurance member ID <span aria-hidden="true">*</span></label>
+              <input id="insurance_member_id" name="insurance_member_id" type="text" minlength="6" maxlength="20" pattern="[A-Za-z0-9]{6,20}" autocomplete="off" aria-describedby="insurance-member-id-error" class="min-h-12 w-full min-w-0 rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]">
+              <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="insurance-member-id-error"></p>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="min-w-0 border-0 border-t border-[#d7e2e1] p-0 pt-6">
+          <legend class="mb-4 block font-bold text-lg text-[#123047]">Your inquiry</legend>
+          <div class="min-w-0" data-form-field>
+            <label class="mb-2 block font-semibold text-[#18323d]" for="health_concern">Brief description of your health concern <span aria-hidden="true">*</span></label>
+            <textarea id="health_concern" name="health_concern" rows="5" minlength="20" maxlength="500" required aria-describedby="health-concern-help health-concern-error" class="min-h-32 w-full min-w-0 resize-y rounded-md border border-[#d7e2e1] bg-white px-3 py-2 text-[#18323d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]"></textarea>
+            <div class="mt-2 flex flex-wrap items-start justify-between gap-2"><p class="mt-2 text-sm leading-snug text-[#526771]" id="health-concern-help">Please do not include information you do not wish to share in this inquiry.</p><p class="text-sm text-[#526771]" id="character-count" aria-live="polite">0 / 500</p></div>
+            <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="health-concern-error"></p>
+          </div>
+          <div class="mt-5 min-w-0" data-form-field>
+            <label class="inline-flex min-h-11 items-center gap-3 py-2 font-medium text-[#18323d]" for="contact_consent"><input id="contact_consent" name="contact_consent" type="checkbox" required aria-describedby="contact-consent-error" class="h-5 w-5 shrink-0 accent-[#06645f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] aria-invalid:border-[#b42332]"> I consent to HealthCore contacting me about this inquiry. <span aria-hidden="true">*</span></label>
+            <p class="mt-2 min-h-0 text-sm font-semibold leading-snug text-[#8f1724]" id="contact-consent-error"></p>
+          </div>
+        </fieldset>
+        <p class="rounded-lg bg-[#f5f8f7] p-4 text-sm text-[#526771]">This inquiry is simulated in your browser. Your information is not saved or sent anywhere.</p>
+        <button class="inline-flex min-h-11 w-full items-center justify-center rounded-md bg-[#087e78] px-5 py-3 font-semibold text-white hover:bg-[#06645f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#06645f] sm:w-auto" type="submit">Submit patient inquiry</button>
+      </form>
+
+      <aside class="mx-auto mt-8 max-w-4xl rounded-lg bg-[#f5f8f7] p-5 text-[#18323d]" data-partnership-note><p>Are you a healthcare provider or organization looking to partner with HealthCore? Contact our operations team at <a href="mailto:partnerships@healthcore.com">partnerships@healthcore.com</a>.</p>
+      </aside>
+    </main>
+    <footer class="mt-auto bg-[#123047] text-white">
+      <div class="mx-auto flex w-full max-w-[75rem] flex-col items-start justify-between gap-4 px-5 py-5 sm:flex-row sm:items-center"><p>© 2026 HealthCore</p><a href="index.html">Home</a></div>
+    </footer>
+  </body>
+</html>
