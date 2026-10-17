@@ -127,7 +127,3 @@ Elige HealthCore si te atraen:
 
 Los desafíos de IA en HealthCore incluyen procesamiento de lenguaje natural de notas clínicas para sugerencias de códigos de facturación, modelos predictivos para no-shows de citas entrenados con datos multi-sede, sistemas RAG sobre documentación de cumplimiento en dos jurisdicciones y programación inteligente que equilibra las preferencias del paciente con la capacidad de la clínica. Si quieres construir sistemas donde la excelencia técnica se traduce directamente en mejor prestación de atención sanitaria, HealthCore es tu empresa.
 
----
-
-_Documento interno — 4Geeks Academy · AI Engineering Track_
-_Uso exclusivo para la generación de proyectos del programa_

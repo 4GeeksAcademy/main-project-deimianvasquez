@@ -1,9 +1,9 @@
-# Proyecto de Compañía - Ingeniería de IA — Plantilla para estudiantes
+# HealthCore Digital — Monorepo de Ingeniería de IA
 
 [![4Geeks Academy](https://img.shields.io/badge/4Geeks-Academy-blue)](https://4geeksacademy.com)
 [![AI Engineering](https://img.shields.io/badge/track-AI%20Engineering-green)](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia)
 
-_Plantilla base para proyectos transversales del Programa de Carrera en Ingeniería de IA — 4Geeks Academy._
+_Monorepo del proyecto transversal de Ingeniería de IA de HealthCore Digital._
 
 _These instructions are also available in [English](./README.md)._
 
@@ -11,22 +11,22 @@ _These instructions are also available in [English](./README.md)._
 
 ## Propósito
 
-Este repositorio es la **plantilla de inicio** para los proyectos transversales. Trabajarás con escenarios de empresas reales (Brasaland, TrackFlow, Nexova) construyendo entregables que se corresponden con los hitos del curso (Web, Programación, Backend, Telemetría, RAG, Agentes, Workflows, Tiempo real).
+Este repositorio contiene el contexto de negocio, las aplicaciones y la documentación del proyecto HealthCore Digital. [`CONTEXT.md`](./CONTEXT.md) es la fuente de verdad para los hechos y restricciones de negocio; [`company-choice.md`](./company-choice.md) registra el proyecto de onboarding seleccionado.
 
-- Crea una plantilla a partir de este repositorio.
-- Reemplaza el `CONTEXT.md` placeholder por el contexto de tu empresa asignada.
-- Usa `skills/` y los `README.md` por carpeta como guía de trabajo.
+- Lee [`AGENTS.md`](./AGENTS.md) antes de realizar cambios en el repositorio.
+- Empieza por el índice de [`memory-bank/`](./memory-bank/README.md) para consultar el contexto persistente y las decisiones vigentes.
+- Consulta [`docs/TECHNICAL_CONTEXT.md`](./docs/TECHNICAL_CONTEXT.md) para conocer el mapa de implementación y los comandos actuales.
+- Sigue las reglas aplicables indexadas en [`.agents/`](./.agents/README.md) y el README/AGENTS más cercano al área que modificarás.
 
 ---
 
 ## Cómo empezar
 
-1. **Usa este repositorio como plantilla** y crea tu propio repo de proyecto.
-2. **Clona** tu repositorio (o ábrelo en Codespaces).
-3. **Reemplaza** `CONTEXT.md` con el contexto completo de tu empresa asignada.
-4. **Lee esta guía de carpetas** y abre el `README.md` de la carpeta en la que estés trabajando.
-5. **Empieza a implementar** en la carpeta correcta — no tires todo en la raíz.
-6. **Documenta** lo que añadas: cada app, servicio, agente o pipeline nuevo lleva subcarpeta + README.
+1. Lee el contexto de negocio y técnico enlazado arriba.
+2. Antes de editar, inspecciona el README del área y cualquier `AGENTS.md` más específico.
+3. Usa los comandos propios de cada aplicación; no existe un runner de workspace en la raíz.
+4. Mantén los cambios en la carpeta responsable y documenta cada componente nuevo.
+5. Completa la lista de validación y entrega de `AGENTS.md` antes de entregar cambios.
 
 ---
 
@@ -49,13 +49,14 @@ Estás construyendo **una sola empresa** a lo largo de muchos hitos y proyectos.
 
 ---
 
-## Estado actual de la plantilla
+## Estado actual
 
-> 💡 Actualmente el repositorio ofrece solo una **estructura base de carpetas y documentación**. Todavía no incluye aplicaciones ejecutables ni scripts globales en la raíz.
->
-> - `CONTEXT.md` es un placeholder y debe sustituirse por el contexto de la empresa asignada.
-> - No existe todavía un `AGENTS.md` en la raíz.
-> - Existe metadata del paquete compartido en `packages/shared/package.json` (`@repo/shared-types`), pero aún no hay runner de workspace en raíz.
+- `uis/website/` contiene el sitio público estático bilingüe.
+- `uis/talent-pipline-tracker/` es una aplicación Next.js con sus propios scripts.
+- La migración del sitio público a Next.js corresponde a `uis/website/`; la app interna va en `uis/backoffice/` y las APIs en `services/`. Consulta [`memory-bank/frontend-decisions.md`](./memory-bank/frontend-decisions.md). El sitio sigue estático hasta que la migración se planifique e implemente.
+- `packages/shared/` tiene metadata de un paquete TypeScript compartido, pero no hay runner de workspace en la raíz.
+- Las demás carpetas principales organizan áreas y documentación; no asumas que existe un backend, CI, stack Docker Compose o runtime de agentes si el componente no lo documenta.
+- El stack, los comandos y las limitaciones se describen en [`docs/TECHNICAL_CONTEXT.md`](./docs/TECHNICAL_CONTEXT.md).
 
 ---
 
@@ -65,11 +66,13 @@ Lee el `README.md` enlazado dentro de cada carpeta antes de empezar a programar 
 
 ### Archivos en la raíz
 
-| Ruta                         | Propósito                                                            | Qué haces aquí                                                                                               |
-| ---------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| [`CONTEXT.md`](./CONTEXT.md) | Fuente única de verdad de tu empresa (Brasaland, TrackFlow o Nexova) | **Primer paso:** copia aquí el briefing de tu empresa para que apps, agentes y prompts usen el mismo dominio |
-| `docker-compose.yml`         | Orquestación local de todo el stack                                  | Mantener en la raíz del repo — conecta `services/`, bases de datos y otros contenedores desde un solo lugar  |
-| `README.md` / `README.es.md` | Esta guía                                                            | Orientación — estás aquí                                                                                     |
+| Ruta                                                       | Propósito                                         | Qué haces aquí                                      |
+| ---------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------- |
+| [`CONTEXT.md`](./CONTEXT.md)                               | Contexto de negocio y restricciones de HealthCore | Leer antes de cambiar el comportamiento del dominio |
+| [`company-choice.md`](./company-choice.md)                 | Proyecto seleccionado e idea de agente            | Usar junto al briefing de empresa                   |
+| [`AGENTS.md`](./AGENTS.md)                                 | Flujo de trabajo global para agentes              | Obligatorio antes de modificar archivos             |
+| [`.agents/`](./.agents/README.md)                          | Reglas específicas para agentes                   | Leer las reglas del área afectada                   |
+| [`docs/TECHNICAL_CONTEXT.md`](./docs/TECHNICAL_CONTEXT.md) | Mapa de implementación actual                     | Fuente para tecnologías y comandos reales           |
 
 ### `uis/` — interfaces de usuario
 
@@ -85,18 +88,9 @@ Lee el `README.md` enlazado dentro de cada carpeta antes de empezar a programar 
 
 → Ver [`uis/README.md`](./uis/README.md)
 
-### `services/` — API centralizada de la empresa (FastAPI)
+### `services/` — APIs y servicios backend
 
-**Propósito:** Un **backend FastAPI centralizado** para toda la empresa — un solo punto de entrada que reduce la complejidad a medida que crece el proyecto.
-
-**Pon aquí:**
-
-- Una app FastAPI principal (p. ej. `api/`) con routers/módulos por dominio (ubicaciones, menús, ventas, telemetría, etc.)
-- Workers en background solo cuando de verdad necesiten correr separados de la API
-
-**Recomendación:** evita dividir en muchos microservicios al inicio. Añade endpoints a la misma app FastAPI; extrae un worker solo cuando sea necesario.
-
-**Ejemplos:** `/locations`, `/menus`, `/sales/reports`, webhooks, jobs programados
+Esta carpeta está reservada para servicios backend. Actualmente no hay una API de HealthCore implementada ni un framework backend configurado aquí. Al añadir un servicio, documenta su stack y sus comandos de ejecución/prueba; no asumas que ya existe FastAPI ni una API centralizada.
 
 → Ver [`services/README.md`](./services/README.md)
 
@@ -209,7 +203,7 @@ Lee el `README.md` enlazado dentro de cada carpeta antes de empezar a programar 
 
 - Dockerfiles, Terraform, manifiestos K8s, configs Nginx, pipelines CI/CD
 
-**Mantener en la raíz del repo:** `docker-compose.yml` — orquesta el entorno local de `services/`, bases de datos y otros contenedores desde un solo lugar.
+Actualmente no existe configuración Docker Compose en la raíz. Documenta orquestación y despliegue cuando se añadan esos archivos.
 
 → Ver [`infra/README.md`](./infra/README.md)
 
@@ -256,7 +250,7 @@ Guía rápida de decisión:
 ¿2+ carpetas importan el mismo código?     → packages/
 ¿Es esquema/plantilla/asset, no librería?  → shared/
 ¿Es arquitectura o docs de todo el equipo? → docs/
-¿Es docker-compose para dev local?         → raíz del repo
+¿Es orquestación local del stack?          → documenta su ubicación real cuando se añada
 ¿Es Docker / deploy / config cloud?        → infra/
 ¿Es un script puntual?                     → scripts/
 ¿Es una CLI con su propio paquete?         → internal/
@@ -267,17 +261,18 @@ Guía rápida de decisión:
 ## Estructura del repositorio (árbol)
 
 ```text
-ai-engineering-company-project-monorepo/
-├── README.md / README.es.md   # Esta guía
-├── CONTEXT.md                 # ← Reemplazar con el briefing de tu empresa
-├── docker-compose.yml         # ← Orquestación local (raíz del repo)
-├── uis/                       # Frontends (website, backoffice, dashboards)
-├── services/                  # API FastAPI centralizada de la empresa
-├── data/
-│   ├── raw/                   # Datasets fuente
-│   ├── pipelines/             # Jobs ETL/ELT
-│   ├── process/               # Salidas limpias / intermedias
-│   └── eval/                  # Conjuntos de evaluación y métricas
+healthcore-digital/
+├── README.md / README.es.md   # Guía del repositorio
+├── AGENTS.md                  # Flujo compartido para agentes
+├── .agents/                   # Reglas específicas para agentes
+├── CONTEXT.md                 # Contexto de negocio de HealthCore
+├── company-choice.md          # Proyecto de onboarding seleccionado
+├── docs/                      # Documentación transversal
+├── uis/
+│   ├── website/               # Sitio estático bilingüe
+│   └── talent-pipline-tracker/ # Aplicación Next.js
+├── services/                  # Reservado para servicios backend
+├── data/                      # Área de datos del proyecto
 ├── agents/                    # Agentes de IA (+ plantilla _template/)
 ├── skills/                    # Skills reutilizables para agentes
 ├── mcps/                      # Servidores MCP para acceso a tools
@@ -301,8 +296,8 @@ ai-engineering-company-project-monorepo/
 
 ## Contribuidores
 
-Esta plantilla fue creada como parte del Programa de Carrera de Ingeniería de IA de 4Geeks Academy por [@marcogonzalo](https://www.linkedin.com/in/marcogonzalo) y [@alezanchezr](https://x.com/alesanchezr), junto a otros muchos colaboradores. Descubre más sobre nuestro [Curso de Ingeniería de IA](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia) y sobre [otros cursos](https://4geeksacademy.com/es/comparar-programas).
+Este repositorio se originó a partir de la plantilla del Programa de Carrera de Ingeniería de IA de 4Geeks Academy, creada por [@marcogonzalo](https://www.linkedin.com/in/marcogonzalo), [@alesanchezr](https://x.com/alesanchezr) y otros colaboradores. Conoce el [Curso de Ingeniería de IA](https://4geeksacademy.com/es/programas-de-carrera/ingenieria-ia).
 
 Puedes encontrar otras plantillas y recursos similares en la [página de GitHub de 4Geeks Academy](https://github.com/4geeksacademy).
 
-_Esta plantilla la mantiene 4Geeks Academy para el track de Ingeniería de IA. Uso exclusivo del programa._
+_El contexto y el estado de implementación específicos de este repositorio prevalecen sobre las guías genéricas de la plantilla._
