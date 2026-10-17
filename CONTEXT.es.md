@@ -127,7 +127,3 @@ Choose HealthCore if you are drawn to:
 
 The AI challenges at HealthCore include natural language processing of clinical notes for billing code suggestions, predictive models for appointment no-shows trained on multi-location data, RAG systems over compliance documentation in two jurisdictions, and intelligent scheduling that balances patient preferences with clinic capacity. If you want to build systems where technical excellence directly translates to better healthcare delivery, HealthCore is your company.
 
----
-
-_Internal document — 4Geeks Academy · AI Engineering Track_
-_For exclusive use in programme project generation_
