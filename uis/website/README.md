@@ -24,6 +24,19 @@ Static checks passed for JavaScript syntax, local links and fragments, bilingual
 
 From this directory, run `npx --yes serve .` and open the URL printed by the command (in Codespaces, forward the port and set its visibility as needed). Opening `index.html` directly also works when the CDN is reachable. The form validates locally and simulates success; it does not save or transmit patient information and does not confirm an appointment.
 
+## Deploy with Docker
+
+From the monorepo root, build and run the static website with Nginx:
+
+```bash
+docker build -t healthcore-website ./uis/website
+docker run -d --name healthcore-website --restart unless-stopped -p 80:80 healthcore-website
+```
+
+Open `http://YOUR_VPS_IP/` for English or `http://YOUR_VPS_IP/index.es.html` for Spanish. The host's port 80 must be available and allowed by the VPS firewall. `EXPOSE 80` documents the container port; `-p 80:80` publishes it on the VPS.
+
+The image includes only the website HTML pages and assets, not the rest of the monorepo. Tailwind still requires internet access in the visitor's browser. This setup serves HTTP only; configure HTTPS before a public production launch. The inquiry form remains a local simulation and does not send or save data.
+
 ## Constraints
 
 Keep executable JavaScript in external files and use Tailwind utility classes instead of custom stylesheets. Do not add inline `style` attributes, `<style>` blocks, or inline executable scripts beyond declarative JSON-LD. Keep translations complete as page content is added. The inquiry form is not a confirmed booking flow.

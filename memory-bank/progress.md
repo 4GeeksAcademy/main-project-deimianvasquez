@@ -1,12 +1,13 @@
 # Estado del proyecto
 
-**Última actualización:** 2026-10-17
+**Última actualización:** 2026-11-09
 
 ## Completado
 
 - El hito 1 del sitio público estático bilingüe llegó a la fase 6 de QA. `docs/IMPLEMENTATION_PLAN.md` registra que queda pendiente la aprobación final y la revisión visual/asistida en navegador.
 - Se documentaron el contexto de HealthCore, reglas raíz, reglas temáticas y la skill `frontend-preflight` con checker y autocontrol.
 - La infraestructura de configuración de agentes vive bajo `.agents/`; el contexto activo y sus fuentes están en `memory-bank/`.
+- Se incorporó `uis/website/Dockerfile` para servir únicamente los HTML y assets del sitio estático con Nginx en el puerto 80; su README documenta la construcción y ejecución en un VPS. HTTPS requiere configuración adicional.
 
 ## Estado actual
 
