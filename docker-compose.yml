@@ -1,0 +1,7 @@
+services:
+  website:
+      build:
+        context: ./uis/website
+      ports:
+        - "8000:80"
+      restart: unless-stopped
